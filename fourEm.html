@@ -1,0 +1,1158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Production Monitoring Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        th,
+        td {
+            border: 1px solid black;
+            padding: 5px;
+            text-align: center;
+            position: relative;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            box-sizing: border-box;
+            border: none;
+            text-align: center;
+            background: transparent;
+            position: relative;
+            z-index: 2;
+        }
+
+        .diagonal-line {
+            position: relative;
+        }
+
+        .diagonal-line::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: linear-gradient(135deg, transparent 0%, transparent 48%, #999 48%, #999 50%, transparent 50%, transparent 100%);
+            z-index: 1;
+        }
+
+        .title {
+            font-weight: bold;
+            background-color: #f0f0f0;
+        }
+
+        .diagInput {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .dividend {
+            top: -5px;
+            left: -5px;
+        }
+
+        .divisor {
+            bottom: -5px;
+            right: -5px;
+        }
+
+        .wrapper {
+            max-width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .cont {
+            display: flex;
+            flex-direction: row;
+            overflow-x: scroll;
+        }
+
+        .topbar {
+            height: 100px;
+            width: 100%;
+            background-color: #36434c;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            padding: 1%;
+        }
+
+        input{
+            font-weight: bold;
+            size: 100pt;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="topbar">
+            <img height="100px" src="https://scontent.fmnl40-2.fna.fbcdn.net/v/t1.15752-9/476499148_1318331259441708_6785172567167897119_n.png?_nc_cat=108&ccb=1-7&_nc_sid=9f807c&_nc_eui2=AeGF_9VRvwcKsSK0DRCL1Y_K06FlAfcstujToWUB9yy26KNxVOqIOUcqWujX1WwudsYNHWGyhZFjTCxXGkffEHCS&_nc_ohc=yuQDD_is75YQ7kNvgHUwXRW&_nc_oc=AdjX8Yafb9npSFCfM_MDKtTtid_G3gqUPfD4w7oV_4e9RPZ-h9nC_EpYZrbbvCxbs8s&_nc_zt=23&_nc_ht=scontent.fmnl40-2.fna&oh=03_Q7cD1wGICIQFo3a3jFZ9iNc7VMfzHJyk7xhxcvsnWYUaubU7Vg&oe=67FA1641" alt="logo">
+            <img height="100px" src="https://scontent.fmnl40-2.fna.fbcdn.net/v/t1.15752-9/476492444_679604567823271_4850491026355288365_n.png?_nc_cat=108&ccb=1-7&_nc_sid=9f807c&_nc_eui2=AeEj3Mv7L_QBd6U9uFKkYOpRNFIkLXt3UrM0UiQte3dSs7tVOgS9OFmuZmzPI8v-I2bJAHPlXH1ymGO_S8Wr-2G-&_nc_ohc=14xNPQ-ACNIQ7kNvgEuY7af&_nc_oc=AdiUUIROHXaqvPscmliVaAWVGmyL-l9tE9FgidyvLa-Jhc3EoUEVITx32yT_Y_AHHzo&_nc_zt=23&_nc_ht=scontent.fmnl40-2.fna&oh=03_Q7cD1wEF-v5QI1t96da12tTRsDMwDkSpovW5_JHqt0sBVYS1Kw&oe=67FA190F" alt="">
+            <img width="100px" height="100px" src="https://scontent.fmnl40-1.fna.fbcdn.net/v/t1.15752-9/476496144_996343755779704_1898162260912841639_n.png?_nc_cat=102&ccb=1-7&_nc_sid=9f807c&_nc_eui2=AeEtXtTdKClsP-FpTkIzZSIolwJ2xhHk1JmXAnbGEeTUmWxxYXrsOiuAGWib-ESLaUCQOaUf2swNUne-jFVYCyr2&_nc_ohc=5f3V9n2RZTEQ7kNvgH22ILy&_nc_oc=AdjpskiBKGJU-8-lU-biytU-6pQuG9pWtzuAaTOSIAHyvVCbZXom-mckOLBGDNIVAgU&_nc_zt=23&_nc_ht=scontent.fmnl40-1.fna&oh=03_Q7cD1wHNCBu39LNu-r__UQ9M8hqDWlUO_L2ZO2S7t9AKUOTekw&oe=67FA15F9" alt="4m">
+        </div>
+        <div class="cont">
+            <table>
+                <tr>
+                    <td colspan="8">Date<input type="text"></td>
+                    <td rowspan="3" colspan="3">HOURLY MONITORING</td>
+                    <td colspan="8"><input type="text"></td>
+                </tr>
+                <tr>
+                    <td colspan="8"><input type="text"></td>
+                    <td colspan="8">Production Plan<input type="text"></td>
+                </tr>
+                <tr>
+                    <td colspan="8">Team Leader<input type="text"></td>
+                    <td colspan="8"><input type="text"></td>
+                </tr>
+
+                <tr>
+                    <td rowspan="3">HR</td>
+                    <td rowspan="3" colspan="2">TIME</td>
+                    <td colspan="5">Conveyor</td>
+                    <td rowspan="3">ISSUES</td>
+                    <td rowspan="3">HR</td>
+                    <td rowspan="3"><input type="text"></td>
+                    <td rowspan="3"><input type="text"></td>
+                    <td rowspan="2" colspan="2"><input type="text"></td>
+                    <td colspan="2"><input type="text"></td>
+                    <td rowspan="2">ISSUES</td>
+                </tr>
+                <tr>
+                    <td rowspan="2"><input type="text"></td>
+                    <td rowspan="2"><input type="text"></td>
+                    <td rowspan="2"><input type="text"></td>
+                    <td colspan="2"><input type="text"></td>
+                    <td>1</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                </tr>
+
+                <tr>
+                    <td>1st</td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td>1st</td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                </tr>
+
+                <tr>
+                    <td>2nd</td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td>2nd</td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                </tr>
+
+                <tr>
+                    <td>3rd</td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td>3rd</td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td>4th</td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td>4th</td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td>5th</td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td>5th</td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td>6th</td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td>6th</td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td>7th</td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td>7th</td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td>8th</td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td>8th</td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td>9th</td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td>9th</td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td>10th</td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td>10th</td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td>11th</td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td>11th</td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td>12th</td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td>12th</td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td>13th</td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td>13th</td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td>14th</td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td>14th</td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                </tr>
+
+                <tr>
+                    <td rowspan="6" colspan="4"></td>
+                    <td colspan="2">Total</td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td rowspan="6"><input type="text"></td>
+                    <td colspan="2">Total</td>
+                    <td colspan="2"><input type="text"></td>
+                    <td colspan="3"><input type="text"></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td colspan="2"><input type="text"></td>
+                    <td colspan="2"><input type="text"></td>
+                    <td colspan="3"><input type="text"></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td colspan="2"><input type="text"></td>
+                    <td colspan="2"><input type="text"></td>
+                    <td colspan="3"><input type="text"></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td colspan="2"><input type="text"></td>
+                    <td colspan="2"><input type="text"></td>
+                    <td colspan="3"><input type="text"></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td colspan="2"><input type="text"></td>
+                    <td colspan="2"><input type="text"></td>
+                    <td colspan="3"><input type="text"></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td colspan="2"><input type="text"></td>
+                    <td colspan="2"><input type="text"></td>
+                    <td colspan="3"><input type="text"></td>
+                </tr>
+            </table>
+
+
+
+            <!-- Bottom table for part numbers and weekly plan -->
+            <table>
+                <tr>
+                    <td class="title">PART NUMBER:</td>
+                    <td class="title">PLAN</td>
+                    <td class="title">MON</td>
+                    <td class="title">TUE</td>
+                    <td class="title">WED</td>
+                    <td class="title">THU</td>
+                    <td class="title">FRI</td>
+                    <td class="title">SAT</td>
+                    <td class="title">TOTAL</td>
+                </tr>
+                <!-- 8 rows for part numbers -->
+                <tr>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td class="diagonal-line">
+                        <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
+                        </div>
+                    </td>
+                    <td><input type="text"></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+
+</body>
+
+</html>
