@@ -26,14 +26,20 @@
             font-weight: bold;
         }
 
+        p{
+            text-align: left;
+            width: 50%;
+        }
+
         input {
             width: 100%;
             box-sizing: border-box;
             border: none;
-            text-align: center;
+            text-align: left;
             background: transparent;
             position: relative;
             z-index: 2;
+            color: #0000b0;
         }
 
         .diagonal-line {
@@ -99,7 +105,12 @@
 
         input{
             font-weight: bold;
-            size: 100pt;
+            font-size: 12.5pt;
+        }
+
+        .toRow{
+            display: flex;
+            flex-direction: row;
         }
     </style>
 </head>
@@ -114,53 +125,85 @@
         <div class="cont">
             <table id="monitoringTable">
                 <tr>
-                    <td colspan="8">Date<input type="text"></td>
-                    <td rowspan="3" colspan="3">HOURLY MONITORING</td>
-                    <td colspan="8"><input type="text"></td>
+                    <td colspan="8">
+                        <div class="toRow">
+                            <p>Date:&nbsp;</p><input type="date" style="font-size: 15pt;" id="dateIn"></input>
+                        </div>
+                    </td>
+                    <td rowspan="3" colspan="3">
+                        HOURLY MONITORING
+                        <button id="clearButton" 
+                        style="background-color: rgb(253, 129, 129);
+                         margin-top: 10%;
+                         font-weight: 1000;
+                         ">
+                            CLEAR ALL
+                        </button>
+                    </td>
+
+                    <td colspan="8">
+                        <div class="toRow">
+                            <p>Part Number:&nbsp;</p><input type="text">
+                        </div>
+                    </td>
                 </tr>
                 <tr>
-                    <td colspan="8"><input type="text"></td>
-                    <td colspan="8">Production Plan<input type="text"></td>
+                    <td colspan="8">
+                        <div class="toRow">
+                            <p>Shift:&nbsp;</p><input type="text">
+                        </div>
+                    </td>
+                    <td colspan="8">
+                        <div class="toRow">
+                            <p>Production Plan:&nbsp;</p><input type="text">
+                        </div>
+                    </td>
                 </tr>
                 <tr>
-                    <td colspan="8">Team Leader<input type="text"></td>
-                    <td colspan="8"><input type="text"></td>
+                    <td colspan="8">
+                        <div class="toRow">
+                            <p style="text-align: left;">Team Leader:&nbsp;</p><input type="text">
+                        </div>
+                    </td>
+                    <td colspan="8">
+                        <div class="toRow">
+                            <input type="text">
+                        </div>
+                    </td>
                 </tr>
 
                 <tr>
                     <td rowspan="3">HR</td>
                     <td rowspan="3" colspan="2">TIME</td>
-                    <td colspan="5">Conveyor</td>
+                    <td colspan="5"><input type="text"></td>
                     <td rowspan="3">ISSUES</td>
                     <td rowspan="3">HR</td>
-                    <td rowspan="3"><input type="text"></td>
-                    <td rowspan="3"><input type="text"></td>
-                    <td rowspan="2" colspan="2"><input type="text"></td>
-                    <td colspan="2"><input type="text"></td>
-                    <td rowspan="2">ISSUES</td>
+                    <td colspan="6">PACKING</td>
+                    <td rowspan="3">ISSUES</td>
                 </tr>
                 <tr>
-                    <td rowspan="2"><input type="text"></td>
-                    <td rowspan="2"><input type="text"></td>
-                    <td rowspan="2"><input type="text"></td>
-                    <td colspan="2"><input type="text"></td>
+                    <td rowspan="2">TARGET</td>
+                    <td rowspan="2">ACTUAL</td>
+                    <td rowspan="2">VARIANCE</td>
+                    <td colspan="2">DOWNTIME</td>
+                    <td rowspan="2">TARGET</td>
+                    <td rowspan="2">VARIANCE</td>
+                    <td rowspan="1" colspan="2">DOWNTIME</td>
+                    <td colspan="2">QUALITY</td>
+                </tr>
+                <tr>
+                    <td>TIME</td>
+                    <td>???<input type="text"></td>
+                    <td>TIME</td>
+                    <td>???<input type="text"></td>
                     <td>1</td>
                     <td>2</td>
                 </tr>
-                <tr>
-                    <td><input type="text"></td>
-                    <td><input type="text"></td>
-                    <td><input type="text"></td>
-                    <td><input type="text"></td>
-                    <td><input type="text"></td>
-                    <td><input type="text"></td>
-                    <td><input type="text"></td>
-                </tr>
 
                 <tr>
                     <td>1st</td>
-                    <td><input type="text"></td>
-                    <td><input type="text"></td>
+                    <td>6:00</td>
+                    <td>7:00</td>
                     <td class="diagonal-line">
                         <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
                         </div>
@@ -188,8 +231,8 @@
 
                 <tr>
                     <td>2nd</td>
-                    <td><input type="text"></td>
-                    <td><input type="text"></td>
+                    <td>7:00</td>
+                    <td>8:00</td>
                     <td class="diagonal-line">
                         <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
                         </div>
@@ -217,8 +260,8 @@
 
                 <tr>
                     <td>3rd</td>
-                    <td><input type="text"></td>
-                    <td><input type="text"></td>
+                    <td>8:00</td>
+                    <td>9:00</td>
                     <td class="diagonal-line">
                         <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
                         </div>
@@ -245,8 +288,8 @@
                 </tr>
                 <tr>
                     <td>4th</td>
-                    <td><input type="text"></td>
-                    <td><input type="text"></td>
+                    <td>9:00</td>
+                    <td>10:00</td>
                     <td class="diagonal-line">
                         <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
                         </div>
@@ -273,8 +316,8 @@
                 </tr>
                 <tr>
                     <td>5th</td>
-                    <td><input type="text"></td>
-                    <td><input type="text"></td>
+                    <td>10:00</td>
+                    <td>11:00</td>
                     <td class="diagonal-line">
                         <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
                         </div>
@@ -301,8 +344,8 @@
                 </tr>
                 <tr>
                     <td>6th</td>
-                    <td><input type="text"></td>
-                    <td><input type="text"></td>
+                    <td>11:00</td>
+                    <td>12:00</td>
                     <td class="diagonal-line">
                         <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
                         </div>
@@ -329,8 +372,8 @@
                 </tr>
                 <tr>
                     <td>7th</td>
-                    <td><input type="text"></td>
-                    <td><input type="text"></td>
+                    <td>12:00</td>
+                    <td>13:00</td>
                     <td class="diagonal-line">
                         <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
                         </div>
@@ -357,8 +400,8 @@
                 </tr>
                 <tr>
                     <td>8th</td>
-                    <td><input type="text"></td>
-                    <td><input type="text"></td>
+                    <td>13:00</td>
+                    <td>14:00</td>
                     <td class="diagonal-line">
                         <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
                         </div>
@@ -385,8 +428,8 @@
                 </tr>
                 <tr>
                     <td>9th</td>
-                    <td><input type="text"></td>
-                    <td><input type="text"></td>
+                    <td>14:00</td>
+                    <td>15:00</td>
                     <td class="diagonal-line">
                         <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
                         </div>
@@ -413,8 +456,8 @@
                 </tr>
                 <tr>
                     <td>10th</td>
-                    <td><input type="text"></td>
-                    <td><input type="text"></td>
+                    <td>15:00</td>
+                    <td>16:00</td>
                     <td class="diagonal-line">
                         <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
                         </div>
@@ -441,8 +484,8 @@
                 </tr>
                 <tr>
                     <td>11th</td>
-                    <td><input type="text"></td>
-                    <td><input type="text"></td>
+                    <td>16:00</td>
+                    <td>17:00</td>
                     <td class="diagonal-line">
                         <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
                         </div>
@@ -469,8 +512,8 @@
                 </tr>
                 <tr>
                     <td>12th</td>
-                    <td><input type="text"></td>
-                    <td><input type="text"></td>
+                    <td>17:00</td>
+                    <td>18:00</td>
                     <td class="diagonal-line">
                         <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
                         </div>
@@ -497,8 +540,8 @@
                 </tr>
                 <tr>
                     <td>13th</td>
-                    <td><input type="text"></td>
-                    <td><input type="text"></td>
+                    <td>18:00</td>
+                    <td>19:00</td>
                     <td class="diagonal-line">
                         <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
                         </div>
@@ -525,8 +568,8 @@
                 </tr>
                 <tr>
                     <td>14th</td>
-                    <td><input type="text"></td>
-                    <td><input type="text"></td>
+                    <td>19:00</td>
+                    <td>20:00</td>
                     <td class="diagonal-line">
                         <div class="diagInput"><input class="dividend" type="text"><input class="divisor" type="text">
                         </div>
@@ -553,9 +596,23 @@
                 </tr>
 
                 <tr>
-                    <td rowspan="6" colspan="4">
-                        <button id="saveButton" style="background-color: greenyellow;">Save</button>
-                        <button id="clearButton" style="background-color: rgb(253, 129, 129);">Clear</button>
+                    <td rowspan="6" colspan="4" style="padding: 0px;">
+                        <textarea 
+                        id="notes"
+                        placeholder="Enter Notes Here..."
+                        style="
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        height: 100%;
+                        width: 100%;
+                        box-sizing: border-box;
+                        resize: none;
+                        padding: 5px;
+                        color: #0000b0;
+                        font-weight: 1000;
+                        font-size: 15px;
+                        "></textarea>
                     </td>
                     <td colspan="2">Total</td>
                     <td><input type="text"></td>
@@ -1158,18 +1215,63 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $(document).ready(function () {
-        loadTable();
+            setCurrDate();
+            loadTable();
+            updateTables();
+            $("#dateIn").on("change", loadTable)
+            $("#clearButton").on("click", clearTableInputs);
+            enableAutoSave();
+        });
+
+        let previousDividends = {}; 
+    
+        function setCurrDate() {
+            let today = new Date().toISOString().split("T")[0];
+            $("#dateIn").val(today); 
+        }
+
+        function formatDateToMMDDYYYY(dateStr) {
+            let [yyyy, mm, dd] = dateStr.split("-"); 
+            return `${mm}-${dd}-${yyyy}`; 
+        }
+
+        function formatDateToYYYYMMDD(dateStr) {
+            let [mm, dd, yyyy] = dateStr.split("-"); 
+            return `${yyyy}-${mm}-${dd}`; 
+        }
 
         function saveTable() {
+            let dateKey = formatDateToMMDDYYYY($("#dateIn").val());
+            if(!dateKey){
+                return;
+            }
             let monitoringData = {
-                monitoringTable: getTableData("#monitoringTable")
+                monitoringTable: getTableData("#monitoringTable"),
+                partNumTable: getTableData("#partNumTable"),
+                notes: $("#notes").val()
             };
-            let partNumData = {
-                partNumTable: getTableData("#partNumTable")
-            };
-            localStorage.setItem("monitoringData", JSON.stringify(monitoringData));
-            localStorage.setItem("partNumData", JSON.stringify(partNumData));
-            alert("Table inputs saved!");
+
+            localStorage.setItem(dateKey, JSON.stringify(monitoringData));
+            console.log("Data saved for date:", dateKey);
+        }
+
+        function loadTable() {
+            let dateKey = formatDateToMMDDYYYY($("#dateIn").val()); 
+            let savedData = localStorage.getItem(dateKey);
+
+            if (!savedData) {
+                alert("No saved data found for this date!");
+                clearTableInputs();
+                $("#dateIn").val(formatDateToYYYYMMDD(dateKey));
+                return;
+            }
+
+            let data = JSON.parse(savedData);
+            populateTableInputs("#monitoringTable", data.monitoringTable);
+            populateTableInputs("#partNumTable", data.partNumTable);
+            $("#notes").val(data.notes || "");
+
+            console.log("Loaded data for date:", dateKey);
         }
 
         function getTableData(tableId) {
@@ -1178,20 +1280,6 @@
                 data.push($(this).val());
             });
             return data;
-        }
-
-        function loadTable() {
-            let monitoringData = localStorage.getItem("monitoringData");
-            let partNumData = localStorage.getItem("partNumData");
-            if (!monitoringData || !partNumData) {
-                alert("No saved data found!");
-                return;
-            }
-            let mData = JSON.parse(monitoringData);
-            let pData = JSON.parse(partNumData);
-
-            populateTableInputs("#monitoringTable", mData.monitoringTable);
-            populateTableInputs("#partNumTable", pData.partNumTable);
         }
 
         function populateTableInputs(tableId, data) {
@@ -1205,21 +1293,127 @@
             });
         }
 
-        function clearTableInputs() {
+        function enableAutoSave() {
+            let tables = ["monitoringTable", "partNumTable"];
+            tables.forEach(tableId => {
+                let table = document.getElementById(tableId);
+                let inputs = table.getElementsByTagName("input");
+                for (let input of inputs) {
+                    if (input.id === "dateIn") continue; 
+                    input.addEventListener("change", saveTable);
+                }
+            });
+            $("#notes").on("input", saveTable); 
+        }
+    
+        function clearTableInputs(action) {
+            let dateKey = formatDateToMMDDYYYY($("#dateIn").val()); 
+
             let tables = ["#monitoringTable", "#partNumTable"];
             tables.forEach(tableId => {
-                $(tableId).find("input").each(function () {
-                    $(this).val("");
-                });
+                $(tableId).find("input").val("");
             });
-            alert("All input values cleared!");
+            previousDividends = {};
+            $("#notes").val(""); 
+            $("#dateIn").val(formatDateToYYYYMMDD(dateKey));          
+        };
+
+        function updateTables() {
+            let tableId = "#monitoringTable";
+
+            $(tableId).find("tr").each(function () {
+                let cells = $(this).find("td");
+
+                if (cells.length >= 6) { 
+                    let targetCol = $(cells[3]); 
+                    let actualCol = $(cells[4]); 
+                    let varianceCol = $(cells[5]); 
+                    let rowIndex = $(this).index();
+
+                    if (!(rowIndex in previousDividends)) {
+                        previousDividends[rowIndex] = { target: 0, actual: 0 };
+                    }
+
+                    targetCol.find("div.diagInput input.dividend").on("change", function () {
+                        handleDividendChange($(this), targetCol, rowIndex, "target");
+                    });
+
+                    actualCol.find("div.diagInput input.dividend").on("change", function () {
+                        handleDividendChange($(this), actualCol, rowIndex, "actual");
+                    });
+                }
+            });
+        };
+
+        function handleDividendChange(inputElement, column, rowIndex, type) {
+            let tableId = "#monitoringTable";
+            let rows = $(tableId).find("tr");
+
+            if (!(rowIndex in previousDividends)) {
+                previousDividends[rowIndex] = { target: 0, actual: 0 };
+            }
+
+            let newDividend = parseFloat(inputElement.val());
+            if (isNaN(newDividend)) {
+                alert("Invalid input! Please enter a valid number.");
+                inputElement.val(previousDividends[rowIndex][type]); 
+                return;
+            }
+
+            previousDividends[rowIndex][type] = newDividend; 
+
+            let cumulativeSum = 0;
+            for (let i = 6; i < rows.length; i++) {
+                let currentRow = $(rows[i]);
+                let currentCol = currentRow.find("td").eq(column.index());
+                let currentDividendInput = currentCol.find("input.dividend");
+                let currentDivisorInput = currentCol.find("input.divisor");
+
+                let currentDividend = parseFloat(currentDividendInput.val()) || 0;
+
+                if (i === 6) { 
+                    cumulativeSum = currentDividend;
+                } else {
+                    cumulativeSum += currentDividend;
+                }
+
+                currentDivisorInput.val(cumulativeSum);
+            }
+
+            recalculateAllVariances(); 
+            saveTable(); 
         }
 
-        $("#saveButton").on("click", saveTable);
-        $("#clearButton").on("click", clearTableInputs);
-    });
-    </script>
 
+        function recalculateAllVariances() {
+            let tableId = "#monitoringTable";
+            let rows = $(tableId).find("tr");
+
+            rows.each(function () {
+                updateVariance($(this));
+            });
+        }
+
+        function updateVariance(row) {
+            let targetCol = $(row).find("td:eq(3)");
+            let actualCol = $(row).find("td:eq(4)");
+            let varianceCol = $(row).find("td:eq(5)");
+
+            let targetDividend = parseFloat(targetCol.find("div.diagInput input.dividend").val()) || 0;
+            let targetDivisor = parseFloat(targetCol.find("div.diagInput input.divisor").val()) || 0;
+            let actualDividend = parseFloat(actualCol.find("div.diagInput input.dividend").val()) || 0;
+            let actualDivisor = parseFloat(actualCol.find("div.diagInput input.divisor").val()) || 0;
+
+            let varianceDividend = targetDividend - actualDividend;
+            let varianceDivisor = targetDivisor - actualDivisor;
+
+            varianceCol.find("input.dividend").val(varianceDividend);
+            varianceCol.find("input.divisor").val(varianceDivisor);
+            saveTable();
+        };
+
+    </script>
+    
 </body>
 
 </html>
